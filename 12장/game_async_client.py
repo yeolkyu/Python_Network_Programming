@@ -2,16 +2,16 @@ import asyncio
 import pygame, pickle
 from game_player import Player
 
-def redrawWindow(win, player, player2):
 # 플레이어 객체를 이용하여 도형을 다시 그린다
+def redrawWindow(win, player, player2):
     win.fill((255,255,255))
     player.draw(win)
     player2.draw(win)
     pygame.display.update()
 
-async def conn_handler(run, host="localhost"):
 # 서버에 연결하고 플레이어 객체를 송수신하여 도형을 다시 그리는 무한 코루틴
-    reader, writer = await asyncio.open_connection(host, 5555, loop=loop) #서버 연결
+async def conn_handler(run, host="localhost"):
+    reader, writer = await asyncio.open_connection(host, 5555) #서버 연결
     pos = await reader.read(2048) # 자신의 플레이어 객체를 수신한다
     pos1 = pickle.loads(pos)
     clock = pygame.time.Clock()
@@ -32,7 +32,7 @@ async def conn_handler(run, host="localhost"):
         pos2 = pickle.loads(pos2)
         redrawWindow(win, pos1, pos2) # 수정된 위치에 자신과 상대방의 도형을 다시 그린다
 
-
+# 게임 화면 설정
 width = 500
 height = 500
 win = pygame.display.set_mode((width, height))
@@ -42,6 +42,4 @@ pygame.display.set_caption(name)
 host = "localhost" # 서버 주소
 run = True
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(conn_handler(run, host))    
-loop.close()
+asyncio.run(conn_handler(run, host))
