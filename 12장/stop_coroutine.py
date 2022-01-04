@@ -10,7 +10,10 @@ async def stop_after(loop, delay):
     await asyncio.sleep(delay)
     loop.stop()
 
-loop = asyncio.get_event_loop()
+try:
+    loop = asyncio.get_running_loop()
+except:
+    loop = asyncio.new_event_loop()
 
 loop.create_task(say('first message', 2))
 loop.create_task(say('second message', 1))

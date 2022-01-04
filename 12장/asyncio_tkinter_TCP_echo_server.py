@@ -24,7 +24,10 @@ class Echoserver(asyncio.Protocol):
         self.loop = event_loop
     
         async def connect(): #서버 생성과 연결
-            loop = asyncio.get_event_loop()
+            try:
+                loop = asyncio.get_running_loop()
+            except:
+                loop = asyncio.new_event_loop()
             svr = await loop.create_server(lambda: self, '', 2500) #Main()
             async with svr:
                 await svr.serve_forever()

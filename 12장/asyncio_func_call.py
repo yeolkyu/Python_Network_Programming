@@ -16,9 +16,10 @@ async def coro2(loop): #키보드 입력을 다시 출력
         print('->',msg)
     
 async def main():
-    loop = aio.get_running_loop() #코루틴에서 이벤트 루프를 얻을 때
-    #coros = [coro1(), coro2(loop)]
-    #await aio.gather(*coros)
+    try:
+        loop = aio.get_running_loop() #코루틴에서 이벤트 루프를 얻을 때
+    except:
+        loop = aio.new_event_loop()
     task1 = loop.create_task(coro1())
     task2 = loop.create_task(coro2(loop))
     
