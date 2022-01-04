@@ -7,8 +7,11 @@ async def say(msg, delay):
     await asyncio.sleep(delay)
     print(msg)
 
-#이벤트 루프를 가져온다
-loop = asyncio.get_event_loop()
+#현재 이벤트 루프를 가져온다
+try:
+    loop = asyncio.get_running_loop()
+except:
+    loop = asyncio.new_event_loop()
 print(f"started at {time.strftime('%X')}")
 
 #태스크 생성
