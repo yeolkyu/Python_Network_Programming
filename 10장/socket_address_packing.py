@@ -2,8 +2,6 @@
 
 import binascii
 import socket
-import struct
-import sys
 
 for string_address in ['203.249.39.46','127.0.0.1']:
     packed =socket.inet_aton (string_address )#문자열 주소를 2진수로 변환

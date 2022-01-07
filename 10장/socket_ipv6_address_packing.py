@@ -2,8 +2,6 @@
 
 import binascii
 import socket
-import struct
-import sys
 
 string_address ='2002:ac10:10a:1234:21e:52ff:fe74:40e'
 
