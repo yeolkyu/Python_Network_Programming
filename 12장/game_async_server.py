@@ -1,5 +1,4 @@
-import socket, pickle
-import asyncio
+import asyncio, pickle
 from game_player import Player
 
 # 두 명의 플레이어 객체 생성

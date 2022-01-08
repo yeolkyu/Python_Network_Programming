@@ -1,7 +1,6 @@
 # 일반 함수를 비동기로 실행하는 프로그램
 
 import asyncio as aio
-import time
 
 async def coro1(): #5초 마다 숫자 출력
     i = 1
@@ -24,6 +23,6 @@ async def main():
     task2 = loop.create_task(coro2(loop))
     
     await task1
-    await taks2
+    await task2
 
 aio.run(main())
