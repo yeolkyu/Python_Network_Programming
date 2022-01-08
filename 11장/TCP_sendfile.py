@@ -1,7 +1,6 @@
 # 파일 전송 프로그램
 
 import socket
-import sys
 
 port = 2500
 s_sock = socket.socket()

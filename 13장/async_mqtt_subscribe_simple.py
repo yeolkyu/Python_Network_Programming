@@ -1,12 +1,14 @@
 # asyncio를 이용한 간단한 mqtt 메시지 구독 프로그램
 
 import paho.mqtt.subscribe as subscribe
-import paho.mqtt.publish as publish
 import asyncio
 
 broker = "test.mosquitto.org"
 async def sub_msg(topic):
-    loop = asyncio.get_event_loop()
+    try:
+        loop = asyncio.get_running_loop()
+    except:
+        loop = asyncio.new_event_loop()
     m = await loop.run_in_executor(None, subscribe.simple,topic, 0, 1, False, broker)#매개변수는 순서대로 나열
     print("Topic= ",m.topic, ", Message= ", m.payload.decode())
 

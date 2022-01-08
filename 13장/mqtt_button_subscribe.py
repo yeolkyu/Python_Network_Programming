@@ -1,6 +1,5 @@
 # 메시지를 구독하여 Entry 창에 표시하는 GUI 프로그램
 
-import paho.mqtt.publish as publish
 import paho.mqtt.subscribe as subscribe
 from tkinter import *
 

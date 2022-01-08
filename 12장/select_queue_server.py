@@ -1,6 +1,6 @@
 #select와 queue 모듈을 이용한 에코 서버 프로그램
 
-import select, socket, sys, queue
+import select, socket, queue
 
 s_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s_sock.setblocking(0) #블록킹 모드

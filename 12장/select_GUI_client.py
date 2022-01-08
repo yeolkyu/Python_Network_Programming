@@ -3,7 +3,6 @@
 
 from socket import *
 from tkinter import *
-import time
 from select import *
 
 #데이터를 수신하고 처리하는 함수
