@@ -11,7 +11,7 @@ client, adr = sock.accept()
 while True:
     # 수신(요청) 패킷 분해
     packet = client.recv(1024) # master packet 수신
-    print("요청 패킷")
+    print("\n요청 패킷")
     for e in packet:
         print("{:02x}".format(e), end=' ')
     
@@ -45,3 +45,4 @@ while True:
     print("응답 패킷")
     for e in resp:
         print("{:02x}".format(e), end=' ')
+    print()

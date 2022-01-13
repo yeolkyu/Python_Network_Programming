@@ -5,10 +5,10 @@ import struct
 
 group_addr = ("224.0.0.255", 5005) #그룹 주소
 #group_addr = ('224.3.29.71', 10000)
-s_sock = socket(AF_INET, SOCK_DGRAM) #UDP 소켓 사
+s_sock = socket(AF_INET, SOCK_DGRAM) #UDP 소켓 사용
 s_sock.settimeout(0.5)
 
-TTL = struct.pack('@i', 2) #TTL 설정
+TTL = struct.pack('@B', 2) #TTL 설정
 s_sock.setsockopt(IPPROTO_IP, IP_MULTICAST_TTL, TTL)
 
 while True:
