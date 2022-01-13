@@ -10,4 +10,4 @@ if __name__ == '__main__':
     
     msg = input('your message: ')
     capsule = frame(start_ch, addr, seqNo, msg)
-    print(capsule)
+    print(f'생성된 프레임: {capsule}')

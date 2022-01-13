@@ -1,6 +1,5 @@
 # 오류제어 기능이 포함된 UDP 클라이언트 프로그램
 
-import random
 from socket import *
 
 port = 2500

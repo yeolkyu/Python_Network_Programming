@@ -11,7 +11,7 @@ print('Waiting...')
 
 while True:
     data, address = s_sock.recvfrom(BUFFER)
-    if random.randint(1, 10) < 4: #패킷 손실
+    if random.randint(1, 10) < 7: #패킷 손실
         print(f'Packet from {address} lost!!!')
         continue
     print(f'Message is {data.decode()!r} from {address}') #메시지 출력
