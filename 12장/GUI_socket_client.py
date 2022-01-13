@@ -3,7 +3,6 @@
 from tkinter import *
 from socket import *
 import threading
-import struct
 
 #섭씨 온도를 서버로 전송
 def calculate():
