@@ -4,13 +4,10 @@ from socket import *
 from threading import *
 
 class MultiChatServer:
-    #__init__()에서 선언할 수 없는 변수는
-    #모든 메소드에서 사용할 수 있도록 클래스 변수로 선언
-    clients = [] #접속된 클라이언트 소켓 목록
-    final_received_message = "" #최종 수신 메시지
-    
     #소켓을 생성하고 연결되면 accept_client() 호출
     def __init__(self):
+        self.clients = [] #접속된 클라이언트 소켓 목록
+        self.final_received_message = "" #최종 수신 메시지
         self.s_sock = socket(AF_INET, SOCK_STREAM)
         self.ip = ''
         self.port = 2500
