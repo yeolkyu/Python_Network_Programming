@@ -7,10 +7,10 @@ sock =socket.create_connection(('localhost',2500 ))
 
 # 메시지 전송
 message ="클라이언트 메시지"
-print('sending {}'.format (message))
+print('sending: {}'.format (message))
 sock.sendall(message.encode())
 
 data =sock.recv(1024) #데이터 수신
-print('received {}'.format (data.decode()))
+print('received: {}'.format (data.decode()))
 print('closing socket')
 sock .close () #연결 종료

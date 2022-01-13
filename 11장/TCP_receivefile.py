@@ -10,7 +10,7 @@ s_sock.connect((host, port)) #서버와 연결
 s_sock.send("I am ready".encode()) #준비 완료 메시지 송신
 fn = s_sock.recv(1024).decode()
 
-with open('e:/'+fn, 'wb') as f: #저장 파일 열기
+with open('d:/'+fn, 'wb') as f: #저장 파일 열기
     print('file opened')
     print('receiving file...')
     while True:

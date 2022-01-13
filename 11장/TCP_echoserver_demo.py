@@ -7,6 +7,7 @@ port = 2500
 BUFSIZE = 1024
 
 sock = socket(AF_INET, SOCK_STREAM)
+sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 sock.bind(('', port)) #자신의 주소 사용
 sock.listen(1) #최대 대기 틀라이언트 수
 print("Waiting for clients...")
