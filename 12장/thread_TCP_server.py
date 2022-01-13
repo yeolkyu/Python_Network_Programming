@@ -4,7 +4,7 @@ from socket import *
 import _thread
 
 BUFFSIZE = 1024
-host_addr = '127.0.0.1'
+host_addr = ''
 port = 2500
 
 def response(key):

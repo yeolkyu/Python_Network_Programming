@@ -7,10 +7,11 @@ class ClientThread(threading.Thread):
     def __init__(self,clientAddress,clientsocket):
         threading.Thread.__init__(self) #부모 클래스 초기화 함수 실행
         self.csocket = clientsocket #인스턴수 변수 정의
-        print ("New socket added: ", clientAddress)
+        self.addr = clientAddress
+        print ("New socket added: ", self.addr)
 
     def run(self): #자동 실행
-        print ("Connection from : ", clientAddress)
+        print ("Connection from : ", self.addr)
 
         msg = ''
         while True:
@@ -23,7 +24,7 @@ class ClientThread(threading.Thread):
             print ("from client", msg)
             self.csocket.send(bytes(msg,'UTF-8')) #에코
             
-        print ("Client at ", clientAddress , " disconnected...")
+        print ("Client at ", self.addr , " disconnected...")
 
 LOCALHOST = ""
 PORT = 2500
