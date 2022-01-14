@@ -9,7 +9,7 @@ if __name__=="__main__":
     
     s_sock = socket.socket() #TCP socket
     s_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s_sock.bind(('localhost', port))
+    s_sock.bind(('', port))
     s_sock.listen(5)
 
     socks.append(s_sock) #서버 소켓을 소켓 목록에 추가
