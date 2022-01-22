@@ -5,9 +5,9 @@ from urllib import request
 URL = 'https://www.dongyang.ac.kr/' #url
 response = request.urlopen(URL) #GET request와 서버 응답
 print('RESPONSE:', response)
-print('URL :', response.geturl()) #url 정보
+print('URL :', response.url) #url 정보
 
-headers = response.info() #응답 헤더 정보
+headers = response.headers #응답 헤더 정보
 print('DATE :', headers['date'])
 print('HEADERS :')
 print('---------')
