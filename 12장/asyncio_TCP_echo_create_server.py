@@ -21,8 +21,8 @@ class EchoServerProtocol(asyncio.Protocol):
         print('Send: {!r}'.format(message))
         self.transport.write(data) #데이터 송신
 
-        #print('Close the client socket')
-        #self.transport.close() #연속 서비스를 원하면 이 문장 삭제
+        print('Close the client socket')
+        self.transport.close() #연속 서비스를 원하면 이 문장 삭제
 
 
 async def main():

@@ -18,6 +18,7 @@ class EchoClientProtocol(asyncio.Protocol):
 
     def connection_lost(self, exc):
         print('The server closed the connection')
+        #동작 종료 표시
         self.on_con_lost.set_result(True)
 
 
@@ -26,6 +27,7 @@ async def main():
     # low-level APIs.
     loop = asyncio.get_running_loop()
 
+    # 퓨처 객체 생성
     on_con_lost = loop.create_future()
     message = 'Hello World!'
 

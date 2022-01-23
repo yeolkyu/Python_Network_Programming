@@ -2,6 +2,7 @@
 
 from socket import *
 from select import *
+import time
 
 socks = []
 sock = socket()
@@ -11,6 +12,7 @@ sock.connect(('localhost', 2500)) #서버 연결
 
 while True:
     r_sock, w_sock, e_sock = select(socks,[],[], 0) #넌블록킹 모드
+    #time.sleep(1)
     if r_sock: #읽기 가능 이벤트 발생
         for s in r_sock:
             if s == sock: #자신에게 온 데이터인가?

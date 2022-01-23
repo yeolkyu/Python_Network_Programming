@@ -2,12 +2,12 @@
 
 import asyncio as aio
 
-async def coro1(): #5초 마다 숫자 출력
+async def coro1(): #3초 마다 숫자 출력
     i = 1
     while True:
         print(i)
         i = i + 1
-        await aio.sleep(1)
+        await aio.sleep(3)
         
 async def coro2(loop): #키보드 입력을 다시 출력
     while True:

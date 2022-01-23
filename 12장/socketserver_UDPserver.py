@@ -16,7 +16,7 @@ class UDPHandler(socketserver.BaseRequestHandler):
         socket.sendto(data.upper(), self.client_address) #재전송
 
 if __name__ == "__main__":
-    HOST, PORT = "localhost", 2500
+    HOST, PORT = "", 2500
     
     #UDP 소켓을 생성하고 실행
     with socketserver.UDPServer((HOST, PORT), UDPHandler) as server:

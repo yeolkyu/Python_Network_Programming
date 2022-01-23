@@ -3,6 +3,7 @@ import socketserver, cv2, imutils, threading
 from threading import Condition
 from http import server
 
+#dnpqvpdlwl ㅗ씌
 PAGE="""\
 <html>
 <head>
@@ -20,24 +21,29 @@ def record():
 
     # WebCam 영상을 jpg로 변환하여 버퍼에 저장
     while vid.isOpened():
-        img, frame = vid.read()
+        #이미지를 읽어온다
+        img, frame = vid.read() #img: 결과(T/F), frame: 이미지
+        #이미지 크기 조정
         frame = imutils.resize(frame, width=640) # numpy array type
-        _, jpg = cv2.imencode(".jpg", frame)
+        #이미지를 jpg 포맷으로 압축한다
+        _, jpg = cv2.imencode(".jpg", frame) #압축 결과(_)는 사용하지 않는다
+        #jpg로 압축된 이미지를 버퍼에 저장한다
         output.write(jpg)
 
 
 class StreamingOutput(object):
     def __init__(self):
         self.frame = None
-        self.condition = Condition() # 조건변수 설정. thread 사이의 교신을 위해 사용
+        self.condition = Condition() # 조건변수 설정. thread 사이의 동기화를 위해 사용
 
     def write(self, buf):
-        # 동기가 맞으면 카메라로부터 받은 영상을 frame에 저장
+        # 동기가 맞으면 압축 영상을 frame에 저장
         with self.condition:
             self.frame = buf 
             self.condition.notify_all() # 조건변수 충족 통지
         
 
+#웹 서버 핸들러 클래스
 class StreamingHandler(server.BaseHTTPRequestHandler):
     # GET Server
     def do_GET(self):

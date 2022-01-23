@@ -9,11 +9,12 @@ class TCPHandler(socketserver.BaseRequestHandler):
             
         # 수신 메시지 전송
         self.request.sendall(self.data.upper())
-            
+
 if __name__ == "__main__":
     HOST, PORT = "localhost", 2500
     # 서버 객체 생성
     server = socketserver.TCPServer((HOST, PORT), TCPHandler, bind_and_activate=True)
 
     # 연결 대기 동작 계속
+    print("waiting")
     server.serve_forever()
