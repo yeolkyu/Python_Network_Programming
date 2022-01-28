@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN,pull_up_down=GPIO.PUD_DOWN) #GPIO23=입력모드
 
 print("Checking SWITCH on GPIO23")
-While True:
+while True:
     led_state = GPIO.input(23) #스위치 상태 읽기
     if led_state == 1:
         msg = "SWITCH ON"

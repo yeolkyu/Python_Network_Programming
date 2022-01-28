@@ -3,7 +3,7 @@
 from urllib import parse
 from urllib import request
 
-query = {'name': 'YKSUH', 'position': 'professor'} #query를 딕셔너리로 표현
+query = {'name': 'YKSUH', 'position':'professor'} #query를 딕셔너리로 표현
 encoded_query = parse.urlencode(query) #딕셔너리로부터 query URL 생성
 print('Encoded:', encoded_query)
 

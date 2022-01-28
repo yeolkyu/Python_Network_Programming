@@ -12,5 +12,5 @@ def on_message(client, userdata, message):
     '''
     print("%s %s" % (message.topic, message.payload))
 
-subscribe.callback(on_message, "mqtt/test/multiple",
+subscribe.callback(on_message, "mqtt/test",
                    hostname="test.mosquitto.org")

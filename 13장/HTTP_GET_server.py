@@ -39,8 +39,7 @@ class GetHandler(BaseHTTPRequestHandler):
         
         #응답 헤더 전송
         self.send_response(200)
-        self.send_header('Content-Type',
-                         'text/plain; charset=utf-8')
+        self.send_header('Content-Type', 'text/plain; charset=utf-8')
         self.end_headers()
         
         #응답 메시지 전송

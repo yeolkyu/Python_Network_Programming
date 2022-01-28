@@ -6,7 +6,8 @@ from tkinter import *
 #메시지를 Entry 창에 표시하는 함수
 def Receiving():
     topics = 'control/msg'
-    m=subscribe.simple(topics, hostname="test.mosquitto.org", msg_count=1)
+    broker = "test.mosquitto.org"
+    m=subscribe.simple(topics, hostname=broker, msg_count=1)
     entry.delete(0, END)
     entry.insert(1, m.payload.decode('utf-8'))
 

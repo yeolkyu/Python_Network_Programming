@@ -3,14 +3,14 @@ import socketserver, cv2, imutils, threading
 from threading import Condition
 from http import server
 
-#dnpqvpdlwl ㅗ씌
+#HTML
 PAGE="""\
 <html>
 <head>
-<title>WebCam streaming demo</title>
+<title>WebCam streaming</title>
 </head>
 <body>
-<h1>WebCam Streaming Demo</h1>
+<h2>WebCam Streaming using ThreadingMixIn and http.server</h2>
 <img src="stream.mjpg" width="640" height="480" />
 </body>
 </html>

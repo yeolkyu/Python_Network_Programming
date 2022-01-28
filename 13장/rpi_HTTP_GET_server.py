@@ -3,24 +3,13 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib import parse
 import RPi.GPIO as GP
+   
+#라즈베리파이 GPIO 설정
+def setGPIO(pin, mode):
+    GP.setmode(GP.BCM)
+    GP.setwarnings(False)
+    GP.setup(pin, mode)
 
-#다중 query를 &를 기준으로 분리하고 딕셔너리로 반환
-def query_parse(query):
-        a = query.split("&")
-        temp = []
-        for item in a:
-            temp.append(item.split("="))
-        for i in range(len(temp)):
-            if len(temp[i]) == 1:
-                temp[i].append('')
-        
-        return dict(temp)
-
-def setGPIO(pin, mode): #라즈베리파이 GPIO 설정
-        GP.setmode(GP.BCM)
-        GP.setwarnings(False)
-        GP.setup(pin, mode)
-    
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     
     def do_GET(self):
@@ -28,13 +17,13 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         msg = parsed_path.query #query 분리
         if msg == '': #query가 없으면 종료
             return
-        parsed_query = query_parse(msg) #다중 query를 딕서너리로 분해
+        parsed_query = parse.parse_qs(msg) #다중 query를 딕서너리로 분해
         
         #query에 따라 LED 제어
-        if parsed_query["led"] == "on":
+        if parsed_query["led"][0] == "on":
             resp="LED is ON"
             GP.output(18, 1) #LED를 ON
-        elif parsed_query["led"] == "off":
+        elif parsed_query["led"][0] == "off":
             resp="LED is OFF"
             GP.output(18, 0)#LED를 OFF
         else:
