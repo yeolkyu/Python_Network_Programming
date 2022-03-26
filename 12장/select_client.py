@@ -11,7 +11,7 @@ socks.append(sock) #생성된 소켓을 목록에 추가
 sock.connect(('localhost', 2500)) #서버 연결
 
 while True:
-    r_sock, w_sock, e_sock = select(socks,[],[], 0) #넌블록킹 모드
+    r_sock, _, _ = select(socks,[],[], 0) #넌블록킹 모드
     #time.sleep(1)
     if r_sock: #읽기 가능 이벤트 발생
         for s in r_sock:
