@@ -31,7 +31,7 @@ def read(c_sock, mask):
         c_sock.close()
 
 sock = socket.socket()
-sock.bind(('', 2500))
+sock.bind(('', 5500))
 sock.listen(5)
 sock.setblocking(False) #넌블록킹 모드로 동작
 
@@ -39,7 +39,7 @@ sock.setblocking(False) #넌블록킹 모드로 동작
 sel.register(sock, selectors.EVENT_READ, accept)
 
 while True:
-    events = sel.select() #이벤트 발생 대기
+    events = sel.select(timeout=0) #이벤트 발생 대기
     
     #발생 이벤트를 조사하여 콜백 호출
     for key, mask in events:

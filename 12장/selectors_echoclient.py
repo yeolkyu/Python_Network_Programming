@@ -13,7 +13,7 @@ bytes_sent = 0
 bytes_received = 0
 
 # 연결 동작은 블록킹 모드이므로 연결 후에 비블록모드로 설정해야 한다
-server_address = ('localhost', 2500)
+server_address = ('localhost', 5500)
 print('연결 {} port {}'.format(*server_address))
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect(server_address)
