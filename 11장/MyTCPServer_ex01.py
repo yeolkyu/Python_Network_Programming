@@ -1,5 +1,7 @@
 #사용자 정의 모듈을 이용한 에코 서버 프로그램
 
+import sys
+#sys.path.append("G:\파이썬교재\sources\book_codes\3판\common")
 import MyTCPServer as ms#사용자 정의 모듈을 불러온다
 
 server = ms.TCPServer(2500)

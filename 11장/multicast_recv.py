@@ -10,7 +10,7 @@ r_sock = socket(AF_INET, SOCK_DGRAM)
 r_sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 r_sock.bind(("", 5005))
 
-mreq = struct.pack("4sl", inet_aton(group_addr), INADDR_ANY)
+mreq = struct.pack("4sL", inet_aton(group_addr), INADDR_ANY)
 r_sock.setsockopt(IPPROTO_IP, IP_ADD_MEMBERSHIP, mreq) #멤버 가입
 print("Ready to receive")
 
