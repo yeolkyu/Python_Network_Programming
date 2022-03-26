@@ -12,12 +12,13 @@ if __name__=="__main__":
     s_sock.bind(('', port))
     s_sock.listen(5)
 
-    socks.append(s_sock) #서버 소켓을 소켓 목록에 추가
+    #listener 소켓을 소켓 목록에 추가
+    socks.append(s_sock) 
     print(str(port) + "에서 접속 대기 중 ")
 
     while True:
         #연결 요청 및 수신 대기(읽기 가능 이벤트만 조사)
-        r_sock, w_sock, e_sock = select.select(socks, [], [])
+        r_sock, _, _ = select.select(socks, [], [], 0)
 
         for s in r_sock: #수신 소켓 리스트의 소켓 조사
             if s == s_sock: #연결 요청인가?
