@@ -8,8 +8,11 @@ server = "localhost"
 c_sock = socket(AF_INET, SOCK_DGRAM)
 c_sock.connect((server, port))
 
+total_delay = 0 #added. total delay time for 10 trials
+
 for i in range(10): #10번 시도
     delay = 0.1  #0.1초부터 지연 시작
+    sub_total = 0 # added. total delay time for one trial
     data = 'Hello message'
 
     while True:
@@ -24,5 +27,10 @@ for i in range(10): #10번 시도
                 print('The server seems to be down')
                 break 
         else:
-            print('Response: ', data.decode())
+            sub_total += delay #added
+            print(data.decode(), "received")
             break #종료
+        
+    total_delay += sub_total   # added
+
+print(f"Average Delay Time={total_delay/10.:.2f}") # added. average delay time
