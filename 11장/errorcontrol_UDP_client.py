@@ -1,4 +1,4 @@
-# 오류제어 기능이 포함된 UDP 클라이언트 프로그램
+# 오류제어 기능이 포함된 UDP 클라이언트(전송) 프로그램
 
 from socket import *
 
@@ -8,11 +8,11 @@ server = "localhost"
 c_sock = socket(AF_INET, SOCK_DGRAM)
 c_sock.connect((server, port))
 
-total_delay = 0 #added. total delay time for 10 trials
+total_delay = 0 # total delay time for 10 trials
 
 for i in range(10): #10번 시도
     delay = 0.1  #0.1초부터 지연 시작
-    sub_total = 0 # added. total delay time for one trial
+    sub_total = 0 # total delay time for one trial
     data = 'Hello message'
 
     while True:
@@ -27,10 +27,10 @@ for i in range(10): #10번 시도
                 print('The server seems to be down')
                 break 
         else:
-            sub_total += delay #added
+            sub_total += delay 
             print(data.decode(), "received")
             break #종료
         
-    total_delay += sub_total   # added
+    total_delay += sub_total
 
-print(f"Average Delay Time={total_delay/10.:.2f}") # added. average delay time
+print(f"Average Delay Time={total_delay/10.:.2f}") # average delay time

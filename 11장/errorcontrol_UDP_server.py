@@ -12,7 +12,7 @@ print('Waiting for data')
 while True:
     data, address = s_sock.recvfrom(BUFFER)
     if random.randint(1, 10) < 4: #패킷 손실
-        print(f'Packet from {address} lost!!!')
+        print(f'Bad! Packet from {address} lost!!!')
     else:
-        print(f'Message is {data.decode()!r} from {address}') #메시지 출력
+        print(f'Good! Message is {data.decode()!r} from {address}') #메시지 출력
         s_sock.sendto('ACK'.encode(), address) #ACK 응답 전송
