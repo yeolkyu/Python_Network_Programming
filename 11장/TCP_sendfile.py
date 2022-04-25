@@ -17,9 +17,7 @@ print(msg.decode())
 
 filename = input('File name to send(c:/test/sample.bin): ') #'\'대신 '/' 사용하여 경로 구분
 print(f"Sending '{filename}'")
-#fn = filename.split('/') #파일 경로 중 파일 이름만 추출
-    
-#c_sock.sendall(fn[-1].encode()) #파일 이름 전송
+
 c_sock.sendall(filename.encode()) #파일 이름 전송
 
 with open(filename, 'rb') as f:

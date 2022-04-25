@@ -2,6 +2,7 @@
 # 1명의 클라이언트만 서비스한다
 
 from socket import *
+import sys
 
 port = 2500
 BUFSIZE = 1024
@@ -27,3 +28,4 @@ while True:
     c_sock.send(data)
 
 c_sock.close()
+sys.exit()
