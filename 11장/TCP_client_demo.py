@@ -15,3 +15,5 @@ while True:
     r_msg = s.recv(BUFSIZE) #receive message from server
     
     print("Received message: %s" %r_msg.decode())
+
+s.close()
