@@ -5,6 +5,7 @@ import threading
 
 def handler(c, a): #데이터를 수신하여 처리하는 함수
     global connections
+    
     while True:
         try:
             data = c.recv(1024)
