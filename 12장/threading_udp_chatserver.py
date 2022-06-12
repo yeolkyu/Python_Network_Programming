@@ -26,7 +26,7 @@ while True:
             clients.append(addr)
         print(time.ctime(time.time()) + str(addr) + ': :' + data.decode())
         for client in clients: #모든 클라이언트에게 전송
-            if client != addr:
+            if client != addr and data:
                 s.sendto(data, client)
     except:
         pass

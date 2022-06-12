@@ -21,6 +21,8 @@ my_id = input("ID를 입력하세요: ")
 cThread = threading.Thread(target=handler, args=(svr,)) #스레드 생성
 cThread.daemon = True
 cThread.start() #스레드 시작
+svr.sendto(''.encode(), conn) # 클라이언트 등록
+
 while True:
     msg = '['+my_id+'] '+input()
     svr.sendto(msg.encode(), conn)
