@@ -5,12 +5,12 @@ from threading import *
 
 class MultiChatServer:
     #소켓을 생성하고 연결되면 accept_client() 호출
-    def __init__(self):
+    def __init__(self, port):
         self.clients = [] #접속된 클라이언트 소켓 목록
         self.final_received_message = "" #최종 수신 메시지
         self.s_sock = socket(AF_INET, SOCK_STREAM)
         self.ip = ''
-        self.port = 2500
+        self.port = port
         self.s_sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
         self.s_sock.bind((self.ip, self.port))
         print("클라이언트 대기 중 ...")
@@ -55,4 +55,4 @@ class MultiChatServer:
         
             
 if __name__ == "__main__":
-    MultiChatServer()
+    MultiChatServer(2500)

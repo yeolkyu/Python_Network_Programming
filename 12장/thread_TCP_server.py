@@ -21,7 +21,7 @@ def handler(clientsock, addr):
 if __name__=='__main__':
     ADDR = (host_addr, port)
     serversock = socket(AF_INET, SOCK_STREAM)
-    serversock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+    #serversock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
     serversock.bind(ADDR)
     serversock.listen(5)
     
