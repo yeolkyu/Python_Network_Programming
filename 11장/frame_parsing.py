@@ -34,8 +34,12 @@ while True:
             
             if int(p_msg[2:6]) == seq_num: #순서번호 확인
                 payload_len = int(p_msg[-4:]) #payload 길이
-                r_msg = r_msg + sock.recv(payload_len).decode() #메시지 구성
+                segment = sock.recv(payload_len).decode()
+                print("수신 프레임 ", segment)
+                r_msg = r_msg + segment #메시지 구성
                 seq_num += 1
+            else:
+                print("재전송 요청")
     except:
         break
 

@@ -1,5 +1,5 @@
 import socket
-import cv2, imutils
+import cv2
 
 UDP_IP = 'localhost'
 UDP_PORT = 9000
@@ -14,8 +14,7 @@ fSize = 46080
 
 while cap.isOpened():
     # Video frame을 읽는다. 성공하면 ret = True, 실패하면 ret = False
-    ret, frame = cap.read()
-    frame = imutils.resize(frame, width=640)
+    ret, frame = cap.read() # width=640, height=480
     cv2.imshow("Client Frame", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         sock.close()

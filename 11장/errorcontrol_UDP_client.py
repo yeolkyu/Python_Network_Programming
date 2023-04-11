@@ -20,14 +20,17 @@ for i in range(10): #10번 시도
         c_sock.send(data.encode())
         print(f'Waiting up to {delay} seconds for a reply')
         c_sock.settimeout(delay) #타임아웃 설정
+        
         try:
             resp = c_sock.recv(BUFFER) #데이터 수신
+            
         except timeout: #타임아웃 발생
             print("No response!!!")
             delay *= 2  #대기 시간 2배 증가
             if delay > 2.0: #시간 초과
                 print('The server seems to be down')
-                break 
+                break
+            
         else:
             sub_total += delay 
             print(resp.decode(), "received")

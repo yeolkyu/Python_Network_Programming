@@ -11,7 +11,7 @@ s_sock.send("I am ready".encode()) #준비 완료 메시지 송신
 fn = s_sock.recv(1024).decode() # 경로를 포함한 파일이름 수신
 filename = os.path.basename(fn) # 기본 파일이름 추출
 
-with open('d:/'+filename, 'wb') as f: #저장 파일 열기
+with open('c:/temp/'+filename, 'wb') as f: #저장 파일 열기
     print('file opened')
     print('receiving file...')
     while True:

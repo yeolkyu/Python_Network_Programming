@@ -30,12 +30,12 @@ while True:
         #임의의 데이터 준비
         data = bytes()
         for i in range(Reg):
-            data = data + struct.pack(">H", randint(0,255))
-        Le = len(data)+3 # 응답 패킷의 길이 영역 계산
+            data = data + struct.pack(">H", randint(0,255)) # 2바이트씩
+        Le = len(data)+3 # # data 길이 + Unit_ID(1) + Function Code(1) + 바이트수(1)
         # 응답 패킷 구성
         resp = struct.pack(">HHHBBB", Tr, Pr, Le, ID, Code, Reg*2) + data
     
-    #Function Code=6에 대한 응답 패킷 구성
+    #Function Code=6에 대한 응답 패킷 구성(응답 패킷 = 요청 패킷)
     elif Code == 0x06: # master 데이터 저장
         print("Register value=", Reg)
         resp = packet

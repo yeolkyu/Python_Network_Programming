@@ -9,6 +9,9 @@ table = {'1':'one', '2': 'two', '3': 'three', '4': 'four',\
 '9': 'nine', '10': 'ten'}
 
 s=socket.socket() #AF_INET, SOCK_STREAM
+host = socket.gethostname()
+ip_addr = socket.gethostbyname(host)
+print(ip_addr)
 address = ("", 2500)
 s.bind(address)
 s.listen(1)
