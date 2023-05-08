@@ -1,8 +1,9 @@
 #타임 서버 프로그램
 
 import socket
-import time, pickle
+import time
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #TCP 소켓
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 address = ("", 5000) #주소
 s.bind(address) #소켓과 주소 결합
 s.listen(5) #접속 대기
