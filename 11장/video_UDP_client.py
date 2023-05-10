@@ -1,3 +1,4 @@
+# 동영상 전송
 import socket
 import cv2
 
@@ -7,16 +8,20 @@ UDP_PORT = 9000
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # WebCam 객체 생성
+print("Video capturing...")
 cap = cv2.VideoCapture(0)
 fSize = 46080
 #if cap.isOpened():
 #    print("width: {}, height: {}".format(cap.get(3), cap.get(4)))
+print("Sending video...")
 
 while cap.isOpened():
     # Video frame을 읽는다. 성공하면 ret = True, 실패하면 ret = False
     ret, frame = cap.read() # width=640, height=480
     cv2.imshow("Client Frame", frame)
+    
     if cv2.waitKey(1) & 0xFF == ord('q'):
+        cv2.destroyAllWindows()
         sock.close()
         cap.release()
         break
