@@ -14,7 +14,7 @@ def Receiving():
 #1초 마다 Entry 창 갱신
 def polling():
     Receiving()
-    root.after(1000, polling) #1초 마다 다시 호출
+    root.after(2000, polling) #1초 마다 다시 호출
 
 root = Tk()
 label1 = Label(root, font=('Verdana', 12), text="수신 메시지")
@@ -22,5 +22,8 @@ label1.grid(row=0, column=0)
 entry = Entry(font=('Verdana', 10), width=20)
 entry.grid(row=0, column=1)
 
+#Receiving()
+print("Waiting for message")
+print("Run the message publishing program")
 polling()
-root.mainloop()
+mainloop()
