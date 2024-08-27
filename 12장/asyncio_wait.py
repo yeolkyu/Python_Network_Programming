@@ -12,12 +12,15 @@ async def say(msg, delay=1):
  
 async def main():
     messages = 'hello world apple banana cherry'.split()
-    cos = [say(m, random.randrange(1,5)) for m in messages]
+    #cos = [say(m, random.randrange(1,5)) for m in messages]
+    coros = [say(m, random.randrange(1,5)) for m in messages] # UPDATED
+    tasks = [asyncio.create_task(coro) for coro in coros] # UPDATED
     
     #코루틴을 스케줄링하고 완료된 태스크 집합과 미완료 태스크 집합을 반환받는다
     #await를 호출하여 코루틴의 실행 결과를 반환받는다
     start_time = time.time() #시작 시각
-    done, pending = await asyncio.wait(cos) #코루틴을 한 번에 스케줄링
+    #done, pending = await asyncio.wait(cos) #코루틴을 한 번에 스케줄링
+    done, pending = await asyncio.wait(tasks) # UPDATED
     
     for task in done: #완료된 태스크의 깂을 반환받는다
         print(await task)
