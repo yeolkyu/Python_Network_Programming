@@ -24,7 +24,8 @@ except:
     loop = asyncio.new_event_loop()
 
 #클라이언트가 연결되면 handle_echo callback이 실행된다
-coro = asyncio.start_server(handle_echo, svr, port, loop=loop) 
+#coro = asyncio.start_server(handle_echo, svr, port, loop=loop) 
+coro = asyncio.start_server(handle_echo, svr, port) # UPDATED
 server = loop.run_until_complete(coro) #코루틴이 완료될 때까지 기다린다
 
 print('Serving on {}'.format(server.sockets[0].getsockname()))
