@@ -5,6 +5,7 @@ import paho.mqtt.client as mqtt
 # 브로커와 연결되면 실행되는 콜백
 def On_Connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
+    print("Waiting for message")
 
     # 이 부분에서 구독 신청을 하면 연결이 끊어지더라도 재연결된다
     topic = "mqtt/test"
@@ -12,9 +13,11 @@ def On_Connect(client, userdata, flags, rc):
 
 # 메시지가 도착하면 실행되는 콜백
 def On_Message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
+    print(msg.topic+" "+str(msg.payload.decode()))
+    #print(msg.retain)
+    
 
-client = mqtt.Client() #클라이언트 객체 생성
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, clean_session=True) #클라이언트 객체 생성
 client.on_connect = On_Connect #연결 콜백 지정
 client.on_message = On_Message #메시지 콜백 지정
 
